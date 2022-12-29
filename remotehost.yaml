@@ -1,0 +1,21 @@
+
+- name: read file on host
+  hosts: all
+  remote_user: opc
+  vars:
+   contents: " "
+  tasks:
+   - name: Read the file
+     command: cat /home/opc/.ssh/authorized_keys
+     register: contents
+
+   - name: print file
+     ansible.builtin.debug:
+      msg: "the content of file is {{ contents }}"
+
+   - name: write a file
+     file: path=/home/opc/configfiles state=touch
+
+   - name: closure
+     ansible.builtin.debug:
+        msg : "file created in {{inventory_hostname}}"

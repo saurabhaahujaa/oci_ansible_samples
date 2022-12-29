@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  become: true
+  tasks:
+    - name : create file
+      file: path=/tmp/testfile state=touch
+    - name : print
+      debug:
+       msg: file created

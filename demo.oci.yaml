@@ -1,0 +1,11 @@
+plugin: oracle.oci.oci
+
+regions:
+ - us-ashburn-1
+
+compartments:
+ - compartment_ocid: ""
+   fetch_hosts_from_subcompartments: false
+
+filters:
+ - lifecycle_state: "RUNNING"

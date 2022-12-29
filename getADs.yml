@@ -1,0 +1,16 @@
+- name : List summary
+  collections:
+    - oracle.oci
+  connection: local
+  hosts: localhost
+  tasks:
+   - name: List availability domains
+     oci_identity_availability_domain_facts:
+     # required
+       compartment_id: ""
+     register: result
+
+   - name : print ADs
+     debug:
+       msg: '{{ result }}'
+

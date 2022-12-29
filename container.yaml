@@ -1,0 +1,13 @@
+- hosts: localhost
+  connection: local
+  become: yes
+  tasks:
+    - name: install podman
+      command: yum install -y podman
+    - name: deploy nginx podman container
+      command: podman run -d  --name testhttpd --privileged -p 8085:80 nginx
+    - name: list all containers
+      command: podman  ps -a
+    - name: verify service working
+      command: curl {{ansible_hostname}}:8085
+
